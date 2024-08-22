@@ -52,7 +52,7 @@ public class BaseballApplication implements Application {
     private void actionToGameStartByJudgement(Judgment judgment) {
         boolean isGameSet = false;
 
-        while (hasGameRunning(isGameSet)) {
+        while (hasGameRun(isGameSet)) {
             String userInputNumber = userAction();
             ArrayList<String> userActionResult = userReadyComplete(userInputNumber);
             Score score = judgment.judge(userActionResult);
@@ -60,7 +60,7 @@ public class BaseballApplication implements Application {
         }
     }
 
-    private static boolean hasGameRunning(boolean isGameSet) {
+    private static boolean hasGameRun(boolean isGameSet) {
         return !isGameSet;
     }
 

@@ -10,7 +10,7 @@ public class Computer {
     private final ArrayList<String> randomNumbers = new ArrayList<>();
 
     public ArrayList<String> generateRandomNumber() {
-        if (randomNumbers.size() == INPUT_LIMIT_LENGTH) {
+        if (isGenerateRandomNumberSizeEqualToLimit()) {
             return randomNumbers;
         }
         String number = getRandomNumberToString();
@@ -19,6 +19,10 @@ public class Computer {
             randomNumbers.add(number);
         }
         return generateRandomNumber();
+    }
+
+    private boolean isGenerateRandomNumberSizeEqualToLimit() {
+        return randomNumbers.size() == INPUT_LIMIT_LENGTH;
     }
 
     private String getRandomNumberToString() {
