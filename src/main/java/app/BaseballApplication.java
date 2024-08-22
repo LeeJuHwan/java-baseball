@@ -75,8 +75,7 @@ public class BaseballApplication implements Application {
     }
 
     private Judgment readyToGame() {
-        Computer computer = new Computer();
-        return new Judgment(computer);
+        return new Judgment(new Computer());
     }
 
 
