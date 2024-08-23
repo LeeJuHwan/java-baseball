@@ -4,7 +4,9 @@ import core.AppException;
 
 public class OutputHandler {
 
-    public static void printAppExceptionMessage(AppException e) {
+    public static void printDefaultExceptionMessage(Exception e) {
+        System.out.println("알 수 없는 오류로 인해 시스템이 종료 됩니다.");
+        System.out.println("############# [DEBUG] Traceback Logging ############");
         System.out.println(e.getMessage());
     }
 
@@ -12,9 +14,7 @@ public class OutputHandler {
         System.out.println(message);
     }
 
-    public static void printDefaultExceptionMessage(Exception e) {
-        System.out.println("알 수 없는 오류로 인해 시스템이 종료 됩니다.");
-        System.out.println("############# [DEBUG] Traceback Logging ############");
+    public void printAppExceptionMessage(AppException e) {
         System.out.println(e.getMessage());
     }
 
