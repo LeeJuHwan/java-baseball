@@ -8,13 +8,13 @@ public class OutputHandler {
         System.out.println(e.getMessage());
     }
 
-    public static void printMessage(String message) {
+    public void printMessage(String message) {
         System.out.println(message);
     }
 
     public static void printDefaultExceptionMessage(Exception e) {
-        printMessage("알 수 없는 오류로 인해 시스템이 종료 됩니다.");
-        printMessage("############# [DEBUG] Traceback Logging ############");
+        System.out.println("알 수 없는 오류로 인해 시스템이 종료 됩니다.");
+        System.out.println("############# [DEBUG] Traceback Logging ############");
         System.out.println(e.getMessage());
     }
 
