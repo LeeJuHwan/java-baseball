@@ -6,34 +6,35 @@ import io.OutputHandler;
 public class Main {
 
     public static void main(String[] args) {
+        Application baseballApplication = new BaseballApplication();
+
         try {
-            startGame();
+            startGame(baseballApplication);
         } catch (Exception e) {
             OutputHandler.printDefaultExceptionMessage(e);
         }
     }
 
-    private static void startGame() {
+    private static void startGame(Application gameApplication) {
         boolean isGameRunning = true;
 
         while (isGameRunning) {
-            Application baseballApplication = new BaseballApplication();
-            baseballApplication.run();
+            gameApplication.run();
 
-            isGameRunning = getGameStatusOption(baseballApplication);
+            isGameRunning = getGameStatusOption(gameApplication);
         }
     }
 
-    private static boolean getGameStatusOption(Application baseballApplication) {
+    private static boolean getGameStatusOption(Application gameApplication) {
 
         try {
-            String gameFlag = baseballApplication.selectGameRestartOrStop();
+            String gameFlag = gameApplication.selectGameRestartOrStop();
 
-            if (baseballApplication.isGameRestart(gameFlag)) {
+            if (gameApplication.isGameRestart(gameFlag)) {
                 return true;
             }
 
-            if (baseballApplication.isGameStop(gameFlag)) {
+            if (gameApplication.isGameStop(gameFlag)) {
                 return false;
             }
 
@@ -41,7 +42,7 @@ public class Main {
 
         } catch (AppException e) {
             OutputHandler.printAppExceptionMessage(e);
-            return getGameStatusOption(baseballApplication);
+            return getGameStatusOption(gameApplication);
         }
     }
 }
