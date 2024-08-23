@@ -9,7 +9,7 @@ public class Computer {
     private final Random random = new Random();
     private final ArrayList<String> randomNumbers = new ArrayList<>();
 
-    public ArrayList<String> generateRandomNumber() {
+    public ArrayList<String> readyToGameStart() {
         if (isGenerateRandomNumberSizeEqualToLimit()) {
             return randomNumbers;
         }
@@ -18,7 +18,7 @@ public class Computer {
         if (doesNotDuplicate(number)) {
             randomNumbers.add(number);
         }
-        return generateRandomNumber();
+        return readyToGameStart();
     }
 
     private boolean isGenerateRandomNumberSizeEqualToLimit() {

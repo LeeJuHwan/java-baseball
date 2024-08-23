@@ -9,7 +9,7 @@ public class Judgment {
 
 
     public Judgment(Computer computer) {
-        this.computerRandomNumbers = computer.generateRandomNumber();
+        this.computerRandomNumbers = computer.readyToGameStart();
         System.out.println("computerRandomNumbers = " + computerRandomNumbers);
     }
 
