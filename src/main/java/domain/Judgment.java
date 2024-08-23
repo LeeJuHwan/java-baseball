@@ -14,12 +14,16 @@ public class Judgment {
     }
 
     public Score judge(ArrayList<String> userInputNumbers) {
-        score.clean();
+        newScore();
 
         for (int seq = 0; seq < userInputNumbers.size(); seq++) {
             scoreRecord(userInputNumbers, seq);
         }
         return score;
+    }
+
+    private void newScore() {
+        score.clean();
     }
 
     private void scoreRecord(ArrayList<String> userInputNumbers, int i) {
