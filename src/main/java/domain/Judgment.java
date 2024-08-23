@@ -26,22 +26,22 @@ public class Judgment {
         score.clean();
     }
 
-    private void scoreRecord(ArrayList<String> userInputNumbers, int i) {
-        if (isStrike(userInputNumbers, i)) {
+    private void scoreRecord(ArrayList<String> userInputNumbers, int arrayInPosition) {
+        if (isStrike(userInputNumbers, arrayInPosition)) {
             score.strikeIncrement();
             return;
         }
 
-        if (isBall(userInputNumbers, i)) {
+        if (isBall(userInputNumbers, arrayInPosition)) {
             score.ballIncrement();
         }
     }
 
-    private boolean isBall(ArrayList<String> userInputNumbers, int i) {
-        return computerRandomNumbers.contains(userInputNumbers.get(i));
+    private boolean isBall(ArrayList<String> userInputNumbers, int arrayInPosition) {
+        return computerRandomNumbers.contains(userInputNumbers.get(arrayInPosition));
     }
 
-    private boolean isStrike(ArrayList<String> userInputNumbers, int i) {
-        return computerRandomNumbers.get(i).equals(userInputNumbers.get(i));
+    private boolean isStrike(ArrayList<String> userInputNumbers, int arrayInPosition) {
+        return computerRandomNumbers.get(arrayInPosition).equals(userInputNumbers.get(arrayInPosition));
     }
 }
