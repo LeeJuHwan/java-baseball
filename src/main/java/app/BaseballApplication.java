@@ -18,35 +18,65 @@ public class BaseballApplication implements Application {
     private final InputHandler inputHandler = new InputHandler();
     private final OutputHandler outputHandler = new OutputHandler();
 
-    public void run() {
+
+    public void startGame() {
         Judgment judgment = readyToGame();
         outputHandler.gameStartCommentPrint();
 
-        applicationToGameStart(judgment);
+        boolean isGameRunning = true;
+        while (isGameRunning) {
+            run(judgment);
+
+            isGameRunning = pauseForUserGameRunOptionSelect();
+        }
     }
 
-    public String selectGameRestartOrStop() {
+    private String userSelectGameRestartOrStop() {
         outputHandler.gameEndCommentPrint();
         return inputHandler.getUserInput();
     }
 
-    public boolean isGameRestart(String gameFlag) {
-        return gameFlag.equals(GAME_RESTART_FLAG);
+    private boolean isGameRestart(String gameFlag) {
+        return GAME_RESTART_FLAG.equals(gameFlag);
     }
 
-    public boolean isGameStop(String gameFlag) {
-        return gameFlag.equals(GAME_STOP_FLAG);
+    private boolean isGameStop(String gameFlag) {
+        return GAME_STOP_FLAG.equals(gameFlag);
     }
 
-    private void applicationToGameStart(Judgment judgment) {
+    private void run(Judgment judgment) {
         try {
             actionToGameStartByJudgement(judgment);
 
         } catch (AppException e) {
-            OutputHandler.printAppExceptionMessage(e);
+            outputHandler.printAppExceptionMessage(e);
 
-            applicationToGameStart(judgment);
+            run(judgment);
         }
+    }
+
+    private boolean pauseForUserGameRunOptionSelect() {
+        try {
+            String gameFlag = userSelectGameRestartOrStop();
+
+            return isGameContinue(gameFlag);
+
+        } catch (AppException e) {
+            outputHandler.printAppExceptionMessage(e);
+            return pauseForUserGameRunOptionSelect();
+        }
+    }
+
+    private boolean isGameContinue(String gameFlag) {
+        if (isGameRestart(gameFlag)) {
+            return true;
+        }
+
+        if (isGameStop(gameFlag)) {
+            return false;
+        }
+
+        throw new AppException("게임 시작 명령어를 잘못 입력 하였습니다.");
     }
 
     private void actionToGameStartByJudgement(Judgment judgment) {
@@ -61,11 +91,14 @@ public class BaseballApplication implements Application {
             String scoreResultMessage = score.getScoreRecordResult();
             outputHandler.printMessage(scoreResultMessage);
 
-            isGameSet = score.isStrikeCountEqualToWinningStrikeCount();
+        boolean isGameSet = score.isStrikeCountEqualToWinningStrikeCount();
+
+        if (stillGameRunning(isGameSet)) {
+            actionToGameStartByJudgement(judgment);
         }
     }
 
-    private static boolean hasGameRun(boolean isGameSet) {
+    private boolean stillGameRunning(boolean isGameSet) {
         return !isGameSet;
     }
 
@@ -82,6 +115,4 @@ public class BaseballApplication implements Application {
     private Judgment readyToGame() {
         return new Judgment(new Computer());
     }
-
-
 }
