@@ -2,8 +2,6 @@ package domain;
 
 import static core.SystemConstant.*;
 
-import io.OutputHandler;
-
 public class Score {
 
     private int strikeCount;
@@ -26,12 +24,16 @@ public class Score {
         this.ballCount += 1;
     }
 
-    public void printScoreRecordResult() {
-        if (ballCount > 0 && strikeCount > 0) {
-            OutputHandler.printMessage(ballCount + "볼 " + strikeCount + "스트라이크");
-            return;
+    public String getScoreRecordResult() {
+        if (isBallAndStrike()) {
             return ballCount + BALL_MESSAGE +  " " + strikeCount + STRIKE_MESSAGE;
+        }
+
+        if (isOnlyBall()) {
             return ballCount + BALL_MESSAGE;
+        }
+
+        if (isOnlyStrike()) {
             return strikeCount + STRIKE_MESSAGE;
         }
 
@@ -42,12 +44,12 @@ public class Score {
         return strikeCount > 0;
     }
 
-        if (strikeCount > 0) {
-            OutputHandler.printMessage(strikeCount + "스트라이크");
-            return;
-        }
+    private boolean isOnlyBall() {
+        return ballCount > 0;
+    }
 
-        OutputHandler.printMessage("낫싱");
+    private boolean isBallAndStrike() {
+        return ballCount > 0 && strikeCount > 0;
     }
 
     public boolean isStrikeCountEqualToWinningStrikeCount() {
