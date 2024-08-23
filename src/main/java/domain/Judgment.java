@@ -19,7 +19,6 @@ public class Judgment {
         for (int seq = 0; seq < userInputNumbers.size(); seq++) {
             scoreRecord(userInputNumbers, seq);
         }
-        score.printScoreRecordResult();
         return score;
     }
 

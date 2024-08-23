@@ -55,7 +55,12 @@ public class BaseballApplication implements Application {
         while (hasGameRun(isGameSet)) {
             String userInputNumber = userAction();
             ArrayList<String> userActionResult = userReadyComplete(userInputNumber);
+
             Score score = judgment.judge(userActionResult);
+
+            String scoreResultMessage = score.getScoreRecordResult();
+            outputHandler.printMessage(scoreResultMessage);
+
             isGameSet = score.isStrikeCountEqualToWinningStrikeCount();
         }
     }
