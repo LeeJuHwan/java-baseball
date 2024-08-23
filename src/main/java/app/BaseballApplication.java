@@ -80,16 +80,13 @@ public class BaseballApplication implements Application {
     }
 
     private void actionToGameStartByJudgement(Judgment judgment) {
-        boolean isGameSet = false;
+        String userInputNumber = userAction();
+        ArrayList<String> userActionResult = userReadyComplete(userInputNumber);
 
-        while (hasGameRun(isGameSet)) {
-            String userInputNumber = userAction();
-            ArrayList<String> userActionResult = userReadyComplete(userInputNumber);
+        Score score = judgment.judge(userActionResult);
 
-            Score score = judgment.judge(userActionResult);
-
-            String scoreResultMessage = score.getScoreRecordResult();
-            outputHandler.printMessage(scoreResultMessage);
+        String scoreResultMessage = score.getScoreRecordResult();
+        outputHandler.printMessage(scoreResultMessage);
 
         boolean isGameSet = score.isStrikeCountEqualToWinningStrikeCount();
 
