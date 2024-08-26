@@ -15,6 +15,7 @@ import static core.SystemConstant.*;
 
 public class BaseballApplication implements Application {
 
+    private final Computer computer = new Computer();
     private final InputHandler inputHandler = new InputHandler();
     private final OutputHandler outputHandler = new OutputHandler();
 
