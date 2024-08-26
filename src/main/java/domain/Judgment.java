@@ -8,9 +8,8 @@ public class Judgment {
     private final ArrayList<String> computerRandomNumbers;
 
 
-    public Judgment(Computer computer) {
-        this.computerRandomNumbers = computer.readyToGameStart();
-        System.out.println("computerRandomNumbers = " + computerRandomNumbers);
+    public Judgment(ArrayList<String> computerRandomNumbers) {
+        this.computerRandomNumbers = computerRandomNumbers;
     }
 
     public Score judge(ArrayList<String> userInputNumbers) {

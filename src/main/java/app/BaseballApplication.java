@@ -110,6 +110,6 @@ public class BaseballApplication implements Application {
     }
 
     private Judgment readyToGame() {
-        return new Judgment(new Computer());
+        return new Judgment(computer.readyToGameStart());
     }
 }
