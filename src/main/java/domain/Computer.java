@@ -6,10 +6,12 @@ import java.util.Random;
 
 public class Computer {
 
-    private final Random random = new Random();
+    public static final int BOUND = 9;
+    private static final Random random = new Random();
     private final ArrayList<String> randomNumbers = new ArrayList<>();
 
     public ArrayList<String> readyToGameStart() {
+
         if (isGenerateRandomNumberSizeEqualToLimit()) {
             return randomNumbers;
         }
@@ -26,7 +28,7 @@ public class Computer {
     }
 
     private String getRandomNumberToString() {
-        return String.valueOf(random.nextInt(9) + 1);
+        return String.valueOf(random.nextInt(BOUND) + 1);
     }
 
     private boolean doesNotDuplicate(String compareInteger) {
