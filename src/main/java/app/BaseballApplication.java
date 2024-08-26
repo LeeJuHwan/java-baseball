@@ -81,10 +81,11 @@ public class BaseballApplication implements Application {
     }
 
     private void actionToGameStartByJudgement(Judgment judgment) {
-        String userInputNumber = userAction();
-        ArrayList<String> userActionResult = userReadyComplete(userInputNumber);
+        String userInputValue = userInput();
+        User user = new User(userInputValue);
+        ArrayList<String> getUserInputArrayStringNumbers = user.getUserInputNumbers();
 
-        Score score = judgment.judge(userActionResult);
+        Score score = judgment.judge(getUserInputArrayStringNumbers);
 
         String scoreResultMessage = score.getScoreRecordResult();
         outputHandler.printMessage(scoreResultMessage);
@@ -100,12 +101,7 @@ public class BaseballApplication implements Application {
         return !isGameSet;
     }
 
-    private ArrayList<String> userReadyComplete(String userInputNumber) {
-        User user = new User(userInputNumber);
-        return user.getUserInputNumbers();
-    }
-
-    private String userAction() {
+    private String userInput() {
         outputHandler.questionToUserAboutInputNumber();
         return inputHandler.getUserInput();
     }
