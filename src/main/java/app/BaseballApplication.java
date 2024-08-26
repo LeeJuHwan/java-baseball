@@ -21,11 +21,11 @@ public class BaseballApplication implements Application {
 
 
     public void startGame() {
-        Judgment judgment = readyToGame();
-        outputHandler.gameStartCommentPrint();
-
         boolean isGameRunning = true;
+
         while (isGameRunning) {
+            Judgment judgment = readyToGame();
+            outputHandler.gameStartCommentPrint();
             run(judgment);
 
             isGameRunning = pauseForUserGameRunOptionSelect();
