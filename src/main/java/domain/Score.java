@@ -2,6 +2,8 @@ package domain;
 
 import static core.SystemConstant.*;
 
+import core.AppException;
+
 public class Score {
 
     private int strikeCount;
@@ -17,10 +19,17 @@ public class Score {
     }
 
     public void strikeIncrement() {
+        if (strikeCount + 1 > WINNING_STRIKE_COUNT) {
+            throw new AppException("스트라이크 카운트는 최대 " + WINNING_STRIKE_COUNT + "까지 증가할 수 있습니다.");
+        }
         this.strikeCount += 1;
     }
 
     public void ballIncrement() {
+        if (ballCount + 1 > WINNING_STRIKE_COUNT) {
+            throw new AppException("볼 카운트는 최대 " + WINNING_STRIKE_COUNT + "까지 증가할 수 있습니다.");
+        }
+
         this.ballCount += 1;
     }
 
