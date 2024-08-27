@@ -22,9 +22,13 @@ public class Computer {
         String number = randomGenerator.getRandomNumberToString(BOUND);
 
         if (doesNotDuplicate(number)) {
-            randomNumbers.add(number);
+            append(number);
         }
         return readyToGameStart();
+    }
+
+    private void append(String number) {
+        randomNumbers.add(number);
     }
 
     private boolean isGenerateRandomNumberSizeEqualToLimit() {
