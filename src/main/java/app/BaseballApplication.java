@@ -9,13 +9,14 @@ import io.InputHandler;
 import io.OutputHandler;
 import java.util.ArrayList;
 import core.AppException;
+import util.RandomGenerator;
 
 import static core.SystemConstant.*;
 
 
 public class BaseballApplication implements Application {
 
-    private final Computer computer = new Computer();
+    private final Computer computer = new Computer(new RandomGenerator());
     private final InputHandler inputHandler = new InputHandler();
     private final OutputHandler outputHandler = new OutputHandler();
 
