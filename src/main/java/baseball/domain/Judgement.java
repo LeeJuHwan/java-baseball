@@ -1,6 +1,9 @@
 package baseball.domain;
 
 
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.BallList;
+import baseball.domain.count.Count;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,7 +13,6 @@ public class Judgement {
         return userBalls.getBalls().stream()
                 .map(userBall -> judgeOneBall(userBall, comBalls))
                 .collect(Collectors.toList());
-
     }
 
     public Count judgeOneBall(Ball userBall, BallList comBalls) {

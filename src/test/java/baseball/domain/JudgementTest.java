@@ -3,6 +3,9 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import baseball.domain.ball.Ball;
+import baseball.domain.ball.BallList;
+import baseball.domain.count.Count;
 import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;

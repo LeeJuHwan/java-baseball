@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.domain.count.Count;
 import java.util.List;
 
 public class Score {
