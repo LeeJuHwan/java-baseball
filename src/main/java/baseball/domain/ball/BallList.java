@@ -2,6 +2,7 @@ package baseball.domain.ball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BallList {
 
@@ -31,4 +32,20 @@ public class BallList {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BallList ballList = (BallList) o;
+        return Objects.equals(balls, ballList.balls);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(balls);
+    }
 }
