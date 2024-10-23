@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import baseball.domain.ball.Ball;
 import baseball.domain.ball.BallList;
+import baseball.shared.MESSAGES;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,8 @@ public class BallListTest {
                 Ball.of(3, 4)
         )))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("BallNumber는 3개가 최대 입니다.");
+                .hasMessage(MESSAGES.BALL_LIST_INSTANCE_ERROR.getMessage());
+
     }
 
     @Test
@@ -32,6 +34,7 @@ public class BallListTest {
                 Ball.of(1, 2)
         )))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("BallNumber는 3개가 최대 입니다.");
+                .hasMessage(MESSAGES.BALL_LIST_INSTANCE_ERROR.getMessage());
+
     }
 }

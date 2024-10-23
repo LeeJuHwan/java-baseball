@@ -3,6 +3,7 @@ package baseball.domain;
 import static org.assertj.core.api.Assertions.*;
 
 import baseball.domain.ball.Ball;
+import baseball.shared.MESSAGES;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,7 +19,8 @@ public class BallTest {
             Ball.of(position, number);
         })
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("올바르지 않은 입력입니다.");
+                .hasMessage(MESSAGES.BALL_INSTANCE_ERROR.getMessage());
+
     }
 
     @Test
@@ -26,7 +28,8 @@ public class BallTest {
     void test_Ball_객체_position_인자_오류() {
         assertThatThrownBy(() -> Ball.of(-1, 1))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("올바르지 않은 입력입니다.");
+                .hasMessage(MESSAGES.BALL_INSTANCE_ERROR.getMessage());
+        
     }
 
     @ParameterizedTest
