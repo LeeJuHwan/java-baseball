@@ -1,5 +1,6 @@
 package baseball.domain.ball;
 
+import baseball.shared.MESSAGES;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +17,7 @@ public class BallList {
 
     private BallList(List<Ball> balls) {
         if (balls.size() != MAX_SIZE) {
-            throw new IllegalArgumentException("BallNumber는 3개가 최대 입니다.");
+            throw new IllegalArgumentException(MESSAGES.BALL_LIST_INSTANCE_ERROR.getMessage());
         }
 
         this.balls = balls;

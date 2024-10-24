@@ -1,5 +1,6 @@
 package baseball.domain.ball;
 
+import baseball.shared.MESSAGES;
 import java.util.Objects;
 
 public class Ball {
@@ -11,7 +12,7 @@ public class Ball {
 
     private Ball(int position, int number) {
         if (ballPositionValidation(position) || ballNumberValidation(number)) {
-            throw new IllegalArgumentException("올바르지 않은 입력입니다.");
+            throw new IllegalArgumentException(MESSAGES.BALL_INSTANCE_ERROR.getMessage());
         }
 
         this.position = position;
